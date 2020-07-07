@@ -17,7 +17,9 @@ public class ServletHome implements Servlet {
 
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+
         // 提供服务
+//        System.out.println(servletRequest);
         System.out.println("Hello, servlet");
     }
 
