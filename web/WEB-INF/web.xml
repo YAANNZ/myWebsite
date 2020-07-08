@@ -7,6 +7,7 @@
     <servlet>
         <servlet-name>Home</servlet-name>
         <servlet-class>com.zyn.website.home.ServletHome</servlet-class>
+        <load-on-startup>0</load-on-startup>    // 0或者正整数，服务启动时创建；负数，第一次访问时创建servlet
     </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
