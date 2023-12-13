@@ -45,12 +45,6 @@ public class loginServlet extends HttpServlet {
     }
 
     private void success(PrintWriter out) {
-
-        List<Customer> customers = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            customers.add(new Customer("张三" + i, "12345" + 1, (i & 1) == 1 ? "男":"女"));
-        }
-
         out.write("<h1 style=\"color: blue; border: 1px solid black;\">登录成功</h1>");
         out.write("<table>");
         out.write("<thead>");
@@ -61,11 +55,16 @@ public class loginServlet extends HttpServlet {
         out.write("</tr>");
         out.write("</thead>");
         out.write("<tbody>");
-        out.write("<tr>");
-        out.write("<td>张三</td>");
-        out.write("<td>12345</td>");
-        out.write("<td>男</td>");
-        out.write("</tr>");
+
+        List<Customer> customers = getCustomers();
+        for (Customer customer : customers) {
+            out.write("<tr>");
+            out.write("<td>"+ customer.getName() +"</td>");
+            out.write("<td>" + customer.getSex() + "</td>");
+            out.write("<td>" + customer.getPhone() + "</td>");
+            out.write("</tr>");
+        }
+
         out.write("</tbody>");
         out.write("</table>");
     }
@@ -75,5 +74,13 @@ public class loginServlet extends HttpServlet {
         out.write("<ul>");
         out.write("<a href=\"http://localhost:8080/crm/login.html\">重新登录</a>");
         out.write("</ul>");
+    }
+
+    private List<Customer> getCustomers() {
+        List<Customer> customers = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            customers.add(new Customer("张三" + i, "12345" + 1, (i & 1) == 1 ? "男":"女"));
+        }
+        return customers;
     }
 }

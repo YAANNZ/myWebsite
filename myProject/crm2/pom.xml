@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example</groupId>
-  <artifactId>crm</artifactId>
+  <artifactId>crm2</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>crm Maven Webapp</name>
+  <name>crm2 Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -27,6 +27,6 @@
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
   <build>
-    <finalName>crm</finalName>
+    <finalName>crm2</finalName>
   </build>
 </project>
