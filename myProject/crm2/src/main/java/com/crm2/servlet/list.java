@@ -33,7 +33,8 @@ public class list extends HttpServlet {
 //        // 3. 设置响应数据的编码
 //        resp.setContentType("text/html; charset=UTF-8");
 
-        req.setAttribute("customers", getCustomers());
+        List<Customer> customers = getCustomers();
+        req.setAttribute("customers", customers);
 
         req.getRequestDispatcher("/page/list.jsp").forward(req, resp);
 
@@ -42,7 +43,7 @@ public class list extends HttpServlet {
     private List<Customer> getCustomers() {
         List<Customer> customers = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            customers.add(new Customer("张三" + i, "12345" + 1, (i & 1) == 1 ? "男":"女"));
+            customers.add(new Customer("张三" + i, 10 + i, 1.55 + 1));
         }
         return customers;
     }

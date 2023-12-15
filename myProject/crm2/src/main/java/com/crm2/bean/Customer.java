@@ -2,15 +2,15 @@ package com.crm2.bean;
 
 public class Customer {
     private String name;
-    private String phone;
-    private String sex;
+    private Integer age;
+    private Double height;
 
     public Customer() {}
 
-    public Customer(String name, String phone, String sex) {
+    public Customer(String name, Integer age, Double height) {
         this.name = name;
-        this.phone = phone;
-        this.sex = sex;
+        this.age = age;
+        this.height = height;
     }
 
     public String getName() {
@@ -21,19 +21,19 @@ public class Customer {
         this.name = name;
     }
 
-    public String getPhone() {
-        return phone;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
-    public String getSex() {
-        return sex;
+    public Double getHeight() {
+        return height;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setHeight(Double height) {
+        this.height = height;
     }
 }
