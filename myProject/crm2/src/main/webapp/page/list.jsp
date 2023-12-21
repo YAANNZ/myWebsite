@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-<a href="page/add.html">添加</a>
+<a href="/crm2/page/add.html">添加</a>
 
 <table>
     <thead>
