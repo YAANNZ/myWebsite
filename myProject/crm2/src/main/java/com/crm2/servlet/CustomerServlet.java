@@ -2,6 +2,7 @@ package com.crm2.servlet;
 
 import com.crm2.bean.Customer;
 import com.crm2.dao.CustomerDao;
+import com.mysql.cj.xdevapi.JsonArray;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Member;
@@ -43,7 +46,13 @@ public class CustomerServlet extends HttpServlet {
     public void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("customers", dao.list());
         req.getRequestDispatcher("/page/list.jsp").forward(req, resp);
+
+//        resp.setContentType("text/html; charset=UTF-8");
+//        PrintWriter out = resp.getWriter();
+//        out.write("<h1>Hello World</h1>");
+//        out.write("success");
     }
+
 
     public void save(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.setCharacterEncoding("UTF-8");
