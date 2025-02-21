@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>我的工具箱 | 我的工具箱提供好用、易用的工具，还在不断添加中，欢迎访问！</title>
+    <!-- <meta name="theme-color" content="#2C2E2F" /> -->
+    <meta name="keywords" content="工具箱,在线工具">
+    <meta name="description" content="我的工具箱提供好用、易用的工具，还在不断添加中，欢迎访问！">
+    <!-- <meta name='robots' content='max-image-preview:large' /> -->
+    <!-- <style id='classic-theme-styles-inline-css' type='text/css'> -->
+    <!-- /*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style> -->
+    <link rel='stylesheet' id='font-awesome-css'
+        href='https://registry.npmmirror.com/font-awesome/4.7.0/files/css/font-awesome.min.css?ver=6.6.2'
+        type='text/css' media='all' />
+    <link rel='stylesheet' id='bootstrap-css'
+        href='https://registry.npmmirror.com/bootstrap/3.4.1/files/dist/css/bootstrap.min.css?ver=6.6.2' type='text/css'
+        media='all' />
+    <!-- <link rel='stylesheet' id='nav-css' href="https://tools.liumingye.cn/wp-content/themes/WebStack/css/nav.css?ver=6.6.2" type='text/css' media='all' /> -->
+    <!-- <script type="text/javascript" src="https://registry.npmmirror.com/jquery/1.11.1/files/dist/jquery.min.js?ver=6.6.2" id="jquery-js"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        .grid-container {
+            display: grid;
+            gap: 10px;
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .grid-item {
+            padding: 20px;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .grid-item:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="grid" class="grid-container"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let apiUrl = "https://example.com/api/grid-data"; // 这里替换成你的 API
+            let grid = document.getElementById("grid");
+            let colors = ["#3498db", "#e74c3c", "#2ecc71", "#f39c12", "#9b59b6", "#1abc9c"]; // 颜色数组
+
+            // 本地测试数据
+            let testData = {
+                x: 4,
+                y: 5,
+                items: [
+                    { title: "Title 1", description: "Description 1" },
+                    { title: "Title 2", description: "Description 2" },
+                    { title: "Title 3", description: "Description 3" },
+                    { title: "Title 4", description: "Description 4" },
+                    { title: "Title 5", description: "Description 5" },
+                    { title: "Title 6", description: "Description 6" },
+                    { title: "Title 7", description: "Description 7" },
+                    { title: "Title 8", description: "Description 8" }
+                ]
+            };
+
+            axios.get(apiUrl)
+                .then(response => {
+                    let { x, y, items } = response.data; // 解构获取数据
+
+                    renderGrid(x, y, items);
+                })
+                .catch(error => {
+                    console.error("数据加载失败:", error);
+                    renderGrid(testData.x, testData.y, testData.items);
+                });
+
+            function renderGrid(x, y, items) {
+                grid.style.gridTemplateColumns = `repeat(${x}, 1fr)`; // 设置列数
+                items.forEach((item, index) => {
+                    let rowColor = colors[Math.floor(index / x) % colors.length]; // 按行分配颜色
+                    let div = document.createElement("div");
+                    div.classList.add("grid-item");
+                    div.style.backgroundColor = rowColor;
+                    div.innerHTML = `<h4>${item.title}</h4><p>${item.description}</p>`;
+                    grid.appendChild(div);
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
